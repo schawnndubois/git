@@ -3,7 +3,7 @@ name: Example GitHub Actions Workflow
 on:
   workflow_dispatch:
     branches:
-      - dev
+      - prod
       
 # Defines the jobs to be run
 jobs:
