@@ -1,20 +1,16 @@
-name: Example GitHub Actions Workflow
-
+name: Basic Workflow Dispatch Example
 on:
   workflow_dispatch:
-    branches:
-      - prod
-      
-# Defines the jobs to be run
+    inputs:
+      environment:
+        description: 'The environment to deploy to'
+        required: true
+        default: 'production'
 jobs:
-  build:
-    # Specifies the runner environment
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Hello, world!
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy
+        run: echo "Deploying to ${{ github.event.inputs.environment }} environment"
