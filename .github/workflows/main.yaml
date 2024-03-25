@@ -1,18 +1,10 @@
 name: Example GitHub Actions Workflow
 
-# Defines the events under which the workflow will run
 on:
- workflow_dispatch:
-  inputs:
-      logLevel:
-        description: 'Log level (e.g., info, warning, error)'
-        required: false
-        default: 'info'
-      environment:
-        description: 'Target environment for the workflow'
-        required: true
-        default: 'dev'
-
+  workflow_dispatch:
+    branches:
+      - dev
+      
 # Defines the jobs to be run
 jobs:
   build:
